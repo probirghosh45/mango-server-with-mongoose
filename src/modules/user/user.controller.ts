@@ -69,5 +69,51 @@ const registerUser = async (req: Request,res : Response)=>{
   }
 }
 
-export {registerUser}
+// 🔹 Get all users
+const getAllUsers = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const users = await User.find();
+    res.status(200).json({
+      success: true,
+      message: "All users fetched successfully",
+      data: users,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch users",
+      error: (error as Error).message,
+    });
+  }
+};
+
+// 🔹 Get single user by ID
+const getSingleUser = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { id } = req.params;
+    const user = await User.findById(id);
+
+    if (!user) {
+      res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+      return;
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "User fetched successfully",
+      data: user,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch user",
+      error: (error as Error).message,
+    });
+  }
+};
+
+export {registerUser,getAllUsers,getSingleUser}
 

@@ -3,6 +3,7 @@ import cors from "cors";
 import mongoose from 'mongoose';
 import config from './config';
 import userRoute from './modules/user/user.route';
+import mangoRoute from './modules/mango/mango.route';
 
 
 const app = express()
@@ -10,6 +11,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(userRoute)
+app.use(mangoRoute)
 
 
 app.get("/",(req,res)=>{

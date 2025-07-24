@@ -1,13 +1,14 @@
 import { Schema, model } from "mongoose";
+import { IUser } from "./user. interface";
 
-// Step 1: Interface define
-interface IUser {
-  name: string;
-  email: string;
-  phone: string;
-  password: string;
-  role: "Admin" | "Customer";
-}
+// // Step 1: Interface define
+// interface IUser {
+//   name: string;
+//   email: string;
+//   phone: string;
+//   password: string;
+//   role: "Admin" | "Customer";
+// }
 
 // Step 2: Schema define
 const userSchema = new Schema<IUser>(

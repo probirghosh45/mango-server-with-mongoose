@@ -1,4 +1,4 @@
-interface IMango {
+export interface IMango {
     name : string,
     varity : string,
     unit : "KG" | "TON",
